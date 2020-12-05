@@ -7,9 +7,6 @@ public class HuseyinPage extends Parent {
 
         System.out.println("Deneme");
 
-        System.out.println("US_5");
-
-        System.out.println("klsjdf");
 
         driver.manage().window().maximize();
 
