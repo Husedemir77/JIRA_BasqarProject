@@ -157,7 +157,12 @@ public class MalikPage extends Parent {
             case "deleteButton":
                 myElement=deleteButton;
                 break;
+
+            case "editButton":
+                myElement=editButton;
+                break;
         }
-        waitUntilClickable(myElement);
+        waitUntilVisible(myElement);
     }
+
 }
