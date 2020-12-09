@@ -11,7 +11,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class _07_NotificationsStepDefs {
+public class US_07_NotificationsPageSteps {
     MalikPage mlk = new MalikPage();
 
     @And("^Click on Elements$")
