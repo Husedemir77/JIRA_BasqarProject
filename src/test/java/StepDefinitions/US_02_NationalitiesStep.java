@@ -6,7 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class _02_NationalitiesStep {
+public class US_02_NationalitiesStep {
 
     @Given("^Navigate to Nationalities Page$")
     public void navigate_to_Nationalities_Page(DataTable arg1) {
