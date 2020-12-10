@@ -11,6 +11,7 @@ import org.testng.Assert;
 import java.util.List;
 
 public class Parent {
+
     public static WebDriver driver;
     public static WebDriverWait wait;
 
