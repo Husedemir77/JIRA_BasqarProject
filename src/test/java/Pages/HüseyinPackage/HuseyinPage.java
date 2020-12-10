@@ -2,10 +2,14 @@ package Pages.HüseyinPackage;
 
 import Pages.Parent;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HuseyinPage extends Parent {
 
@@ -21,8 +25,8 @@ public class HuseyinPage extends Parent {
     @FindBy(xpath = "//span[text()='Parameters']")
     private WebElement parameters;
 
-    @FindBy(xpath = "//span[text()='Citizenships']")
-    private WebElement citizenships;
+    @FindBy(xpath = "//span[text()='Grade Levels']")
+    private WebElement gradeLevels;
 
     @FindBy(css = "ms-add-button.ng-star-inserted")
     private WebElement btnAdd;
@@ -34,25 +38,36 @@ public class HuseyinPage extends Parent {
     @FindBy(css = "ms-text-field[formcontrolname='shortName']>input") // if input,find a input tag
     private WebElement inputshortname;
 
+    @FindBy(css = "ms-text-field[formcontrolname='order']>input")
+    private WebElement inputOrder;
+
+    @FindBy(css = "mat-select[id='mat-select-14']")
+    private WebElement inputNextGrade;
+
     @FindBy(css = "ms-save-button>button")
     private WebElement btnSave;
 
+    @FindBy(xpath = "//div[@id='toast-container']")
+    private WebElement msjContainer;
 
-    @FindBy(xpath = "(//ms-text-field/input)[1]")
-    private WebElement inputSearchName;
+    @FindAll({
+            @FindBy(xpath = "//div[@id='toast-container']")
+    })
+    private List<WebElement> msjContainers;
 
-    @FindBy(xpath = "(//ms-text-field/input)[2]")
-    private WebElement inputSearchShrtNam;
+    @FindAll({
+            @FindBy(xpath = "//table/tbody/tr/td[2]")})
+    public List<WebElement> nameList;
 
-    @FindBy(xpath = "//span[text()=' Search ']")
-    private WebElement btnSearch;
+    @FindAll({
+            @FindBy(xpath = "//ms-delete-button/button")
+    })
+    public List<WebElement> deleteButtonList;
 
-    @FindBy(xpath = "(//ms-edit-button/button)[1]")
-    private WebElement editAfterSearch;
-
-
-    @FindBy(xpath = "(//ms-delete-button[@class='ng-star-inserted']/button)[1]")
-    private WebElement afterSearchDelete;
+    @FindAll({
+            @FindBy(xpath = "//ms-edit-button/button")
+    })
+    public List<WebElement> editButtonList;
 
     @FindBy(xpath = " //span[text()=' Yes '] ")
     private WebElement btnYes;
@@ -72,18 +87,6 @@ public class HuseyinPage extends Parent {
                 myElement = btnAdd;
                 break;
 
-            case "afterSearchDelete":
-                myElement = afterSearchDelete;
-                break;
-
-            case "editAfterSearch":
-                myElement = editAfterSearch;
-                break;
-
-            case "btnSearch":
-                myElement = btnSearch;
-                break;
-
             case "setupOne":
                 myElement = setupOne;
                 break;
@@ -92,8 +95,8 @@ public class HuseyinPage extends Parent {
                 myElement = parameters;
                 break;
 
-            case "citizenships":
-                myElement = citizenships;
+            case "gradeLevels":
+                myElement = gradeLevels;
                 break;
 
             case "btnSave":
@@ -121,15 +124,13 @@ public class HuseyinPage extends Parent {
                 myElement = inputshortname;
                 break;
 
-
-            case "inputSearchName":
-                myElement = inputSearchName;
+            case "inputOrder":
+                myElement = inputOrder;
                 break;
 
-            case "inputSearchShrtNam":
-                myElement = inputSearchShrtNam;
+            case "inputNextGrade":
+                myElement = inputNextGrade;
                 break;
-
 
         }
         sendKeysFunction(myElement, value);
@@ -139,34 +140,12 @@ public class HuseyinPage extends Parent {
     public void waitUntilNeed(String elementName) {
 
         switch (elementName) {
-            case "afterSearchDelete":
-                myElement = afterSearchDelete;
-                break;
-
-            case "editAfterSearch":
-                myElement = editAfterSearch;
-                break;
 
             case "btnAdd":
                 myElement = btnAdd;
                 break;
-
         }
-
-        waitUntilVisible(myElement);
-    }
-
-
-    public void needToScroll(String elementName) {
-
-        switch (elementName) {
-            case "inputSearchName":
-                myElement = inputSearchName;
-                break;
-
-
-        }
-        scrollToElement(myElement);
+        waitUntilClickable(myElement);
     }
 
 
@@ -185,8 +164,36 @@ public class HuseyinPage extends Parent {
         wait.until(ExpectedConditions.textToBePresentInElement(myElement, Msg));
         Assert.assertTrue(myElement.getText().toLowerCase().contains(Msg.toLowerCase()));
 
+    }
 
+    public void editAndDeleteFunction(String countryName, String editOrDelete) {
+
+        List<WebElement> btnList = new ArrayList<>();
+        btnList = waitVisibleListAllElement(editButtonList);
+
+        List<WebElement> nameListNew = waitVisibleListAllElement(nameList);
+
+        for (int i = 0; i < nameListNew.size(); i++) {
+            if (nameListNew.get(i).getText().equalsIgnoreCase(countryName)) {
+                clickFunction(btnList.get(i));
+            }
+        }
+    }
+
+    public void deleteFunction(String countryName, String editOrDelete) {
+
+        List<WebElement> btnList = new ArrayList<>();
+
+        btnList = waitVisibleListAllElement(deleteButtonList);
+
+        List<WebElement> nameListNew = waitVisibleListAllElement(nameList);
+
+        for (int i = 0; i < nameListNew.size(); i++) {
+            if (nameListNew.get(i).getText().equalsIgnoreCase(countryName)) {
+                clickFunction(btnList.get(i));
+            }
+        }
+        findElementAndClickFunction("btnYes");
     }
 
 }
-
