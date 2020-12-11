@@ -35,12 +35,15 @@ public class LoginPage extends Parent {
     @FindBy(xpath = "//h3[text()='  Dashboard ']")
     public WebElement dashboardText;
 
+    @FindBy(id = "toast-container")
+    private WebElement successMessage;
+
     public void login(String usernameStr, String passwordStr) {
         sendKeysFunction(username, usernameStr);
         sendKeysFunction(password, passwordStr);
         clickFunction(loginButton);
 
-        //clickFunction(gotItBtn);
+       // clickFunction(gotItBtn);
 
 
     }
@@ -61,6 +64,10 @@ public class LoginPage extends Parent {
 
             case "errorAlert":
                 myElement = errorAlert;
+                break;
+
+            case "successMessage":
+                myElement = successMessage;
                 break;
         }
 

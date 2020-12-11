@@ -20,6 +20,7 @@ public class _00_LoginStepDefs {
         new LoginPage().login("daulet2030@gmail.com","TechnoStudy123@");
     }
 
+
     @Then("^User should login successfully$")
     public void userShouldLoginSuccessfully() {
         Assert.assertTrue(new LoginPage().dashboardText.isDisplayed());
