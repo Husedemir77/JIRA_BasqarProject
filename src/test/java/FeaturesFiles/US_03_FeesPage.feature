@@ -16,3 +16,4 @@ Feature: Fess Functionality
   Scenario: Delete a fees
     When  User delete Fess with ApachePOI
     Then User should login successfully
+
