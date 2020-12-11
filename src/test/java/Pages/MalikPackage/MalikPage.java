@@ -1,13 +1,13 @@
 package Pages.MalikPackage;
 
 import Pages.Parent;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MalikPage extends Parent {
     WebElement myElement;
+
     public MalikPage(){
         PageFactory.initElements(driver,this);
     }
@@ -157,7 +157,13 @@ public class MalikPage extends Parent {
             case "deleteButton":
                 myElement=deleteButton;
                 break;
+
+            case "editButton":
+                myElement=editButton;
+                break;
         }
-        waitUntilClickable(myElement);
+        waitUntilVisible(myElement);
     }
+
 }
+
