@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeftNav extends _Parent {
+public class LeftNav extends Parent {
 
     public LeftNav() {
         PageFactory.initElements(driver, this);
@@ -20,13 +20,11 @@ public class LeftNav extends _Parent {
     @FindBy(xpath = "//span[text()='Item Categories']")
     private WebElement ItemCategory;
 
-
     WebElement myElement;
 
     public void findElementAndClickFunction(String elementName) {
 
         switch (elementName) {
-
 
             case "Inventory":
                 myElement = Inventory;
@@ -39,8 +37,6 @@ public class LeftNav extends _Parent {
             case "ItemCategory":
                 myElement = ItemCategory;
                 break;
-
-
         }
 
         clickFunction(myElement);

@@ -13,7 +13,7 @@ Feature: All Tests
     And  Navigate a new Subject create and save
       | addButton |
     When Create a new Subject send Keys
-      | nameInput | Yusuf_Java |
+      | nameInput | YusufS_Java |
     And  Navigate a new Subject create and save
       | userTypeDropdown |
     And Create a new UserType Choice Administrator
@@ -21,13 +21,13 @@ Feature: All Tests
       | saveButton |
     Then User should login successfully
     When Create a new Subject send Keys
-      | ItemCategoriesNameInputSearch | Yusuf_Java |
+      | ItemCategoriesNameInputSearch | YusufS_Java |
     And  Navigate a new Subject create and save
       | searchButton |
     And  Navigate a new Subject create and save
       | ItemCategoriesEditButton |
     When Create a new Subject send Keys
-      | nameInput | Yusuf_Selenium |
+      | nameInput | YusufS_Selenium |
     And  Navigate a new Subject create and save
       | ItemCategoriesCancelButton |
     And Create a new UserType Choice Student
@@ -35,7 +35,7 @@ Feature: All Tests
       | saveButton |
     Then User should login successfully
     When Create a new Subject send Keys
-      | ItemCategoriesNameInputSearch | Yusuf_Selenium |
+      | ItemCategoriesNameInputSearch | YusufS_Selenium |
     And  Navigate a new Subject create and save
       | searchButton |
     And Delete Subject Categories

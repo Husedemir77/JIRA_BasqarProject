@@ -9,14 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class DialogContent extends _Parent {
+public class DialogContent extends Parent {
     WebElement myElement;
-
 
     public DialogContent() {
         PageFactory.initElements(driver, this);
     }
-
 
     @FindAll({
             @FindBy(xpath = "//div[@id='toast-container']")
@@ -90,12 +88,9 @@ public class DialogContent extends _Parent {
     @FindBy(xpath = "//mat-icon[text()='cancel']")
     private WebElement ItemCategoriesCancelButton;
 
-
     public void findElementAndClickFunction(String ElementName) {
 
-
         switch (ElementName) {
-
 
             case "ItemCategoriesEditButton":
                 myElement = ItemCategoriesEditButton;
@@ -140,8 +135,6 @@ public class DialogContent extends _Parent {
             case "ItemCategoriesCancelButton":
                 myElement = ItemCategoriesCancelButton;
                 break;
-
-
         }
 
         clickFunction(myElement);
